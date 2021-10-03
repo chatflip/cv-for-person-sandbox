@@ -1,4 +1,4 @@
-# deep-for-person-sandbox
+# cv-for-person-sandbox
 
 ## Installation
 ```bash
