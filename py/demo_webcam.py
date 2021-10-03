@@ -3,7 +3,7 @@ import sys
 import time
 
 import cv2
-from Detector import Detector
+from models.Detector import Detector
 
 
 def opt():
