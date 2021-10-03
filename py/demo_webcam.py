@@ -8,7 +8,7 @@ from models.Detector import Detector
 
 def opt():
     parser = argparse.ArgumentParser(description="mbg")
-    parser.add_argument("--algorithm", type=str, default="KeypointRCNN")
+    parser.add_argument("--arch", type=str, default="KeypointRCNN")
     parser.add_argument("--camera_width", type=int, default=1280)
     parser.add_argument("--camera_height", type=int, default=720)
     parser.add_argument("--fps", type=float, default=60.0)
@@ -25,7 +25,7 @@ def main(args):
     cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*"MJPG"))
     cap.set(cv2.CAP_PROP_FPS, args.fps)
     cap.set(cv2.CAP_PROP_BUFFERSIZE, args.buffersize)
-    model = Detector(args.algorithm)
+    model = Detector(args.arch)
 
     while cap.isOpened():
         ret, frame = cap.read()

@@ -8,7 +8,7 @@ from models.Detector import Detector
 
 def opt():
     parser = argparse.ArgumentParser(description="mbg")
-    parser.add_argument("--algorithm", type=str, default="KeypointRCNN")
+    parser.add_argument("--arch", type=str, default="KeypointRCNN")
     parser.add_argument("--input_path", type=str, default="data/sample.jpg")
     args = parser.parse_args()
     return args
@@ -16,7 +16,7 @@ def opt():
 
 def main(args):
     print(args)
-    model = Detector(args.algorithm)
+    model = Detector(args.arch)
     assert os.path.exists(args.input_path), f"{args.input_path} not exists"
     image = cv2.imread(args.input_path)
 
