@@ -2,6 +2,7 @@ from models.Deeplabv3Mobilenetv3Large import Deeplabv3Mobilenetv3Large
 from models.DeepLabv3Resnet101 import DeepLabv3Resnet101
 from models.FasterrcnnResnet50 import FasterrcnnResnet50
 from models.KeypointRCNN import KeypointRCNN
+from models.MpHolistic import MpHolistic
 
 
 class Detector:
@@ -14,6 +15,8 @@ class Detector:
             self.model = KeypointRCNN()
         elif arch == "DeepLabv3Resnet101":
             self.model = DeepLabv3Resnet101()
+        elif arch == "MpHolistic":
+            self.model = MpHolistic()
 
     def preprocess(self, input):
         return self.model.preprocess(input)
