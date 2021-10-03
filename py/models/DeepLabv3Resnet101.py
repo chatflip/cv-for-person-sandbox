@@ -1,13 +1,13 @@
 import cv2
 import numpy as np
 import torch
-from torchvision.models.segmentation import deeplabv3_mobilenet_v3_large
+from torchvision.models.segmentation import deeplabv3_resnet101
 
 
-class Deeplabv3Mobilenetv3Large:
-    def __init__(self, input_half_size=True):
+class DeepLabv3Resnet101:
+    def __init__(self, input_half_size=False):
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        model = deeplabv3_mobilenet_v3_large(pretrained=True)
+        model = deeplabv3_resnet101(pretrained=True)
         self.model = model.eval().to(self.device)
         self.input_half_size = input_half_size
         self.person_label = 15
