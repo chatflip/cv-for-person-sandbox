@@ -8,7 +8,7 @@ from models.Detector import Detector
 
 def opt():
     parser = argparse.ArgumentParser(description="mbg")
-    parser.add_argument("--arch", type=str, default="KeypointRCNN")
+    parser.add_argument("--arch", type=str, default="MpHolistic")
     parser.add_argument("--input_path", type=str, default="data/sample.jpg")
     args = parser.parse_args()
     return args

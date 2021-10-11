@@ -8,7 +8,7 @@ from models.Detector import Detector
 
 def opt():
     parser = argparse.ArgumentParser(description="mbg")
-    parser.add_argument("--arch", type=str, default="KeypointRCNN")
+    parser.add_argument("--arch", type=str, default="MpHolistic")
     parser.add_argument("--camera_width", type=int, default=1280)
     parser.add_argument("--camera_height", type=int, default=720)
     parser.add_argument("--fps", type=float, default=60.0)
