@@ -3,20 +3,23 @@ from models.DeepLabv3Resnet101 import DeepLabv3Resnet101
 from models.FasterrcnnResnet50 import FasterrcnnResnet50
 from models.KeypointRCNN import KeypointRCNN
 from models.MpHolistic import MpHolistic
+from models.Yunet import Yunet
 
 
 class Detector:
     def __init__(self, arch):
-        if arch == "FasterrcnnResnet50":
-            self.model = FasterrcnnResnet50()
-        elif arch == "Deeplabv3Mobilenetv3Large":
+        if arch == "Deeplabv3Mobilenetv3Large":
             self.model = Deeplabv3Mobilenetv3Large()
-        elif arch == "KeypointRCNN":
-            self.model = KeypointRCNN()
         elif arch == "DeepLabv3Resnet101":
             self.model = DeepLabv3Resnet101()
+        elif arch == "FasterrcnnResnet50":
+            self.model = FasterrcnnResnet50()
+        elif arch == "KeypointRCNN":
+            self.model = KeypointRCNN()
         elif arch == "MpHolistic":
             self.model = MpHolistic()
+        elif arch == "Yunet":
+            self.model = Yunet()
 
     def preprocess(self, input):
         return self.model.preprocess(input)

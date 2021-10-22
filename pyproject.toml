@@ -5,10 +5,11 @@ description = ""
 authors = ["chatflip <oo.chat.flip@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
-torch = "^1.9.1"
-torchvision = "^0.10.1"
-mediapipe = "^0.8.7"
+python = ">=3.7,<3.11"
+torch = "^1.10.0"
+torchvision = "^0.11.1"
+mediapipe = "^0.8.8"
+opencv-python = "^4.5.4"
 
 [tool.poetry.dev-dependencies]
 pysen = "*"
