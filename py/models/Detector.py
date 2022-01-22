@@ -3,6 +3,7 @@ from models.DeepLabv3Resnet101 import DeepLabv3Resnet101
 from models.FasterrcnnResnet50 import FasterrcnnResnet50
 from models.KeypointRCNN import KeypointRCNN
 from models.MpHolistic import MpHolistic
+from models.MpSelfieSegmentation import MpSelfieSegmentation
 from models.Yunet import Yunet
 
 
@@ -18,6 +19,8 @@ class Detector:
             self.model = KeypointRCNN()
         elif arch == "MpHolistic":
             self.model = MpHolistic()
+        elif arch == "MpSelfieSegmentation":
+            self.model = MpSelfieSegmentation()
         elif arch == "Yunet":
             self.model = Yunet()
 
