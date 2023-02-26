@@ -6,15 +6,15 @@ import cv2
 from models.Detector import Detector
 
 
-def opt():
-    parser = argparse.ArgumentParser(description="mbg")
+def config() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="demo_image")
     parser.add_argument("--arch", type=str, default="MpHolistic")
     parser.add_argument("--input_path", type=str, default="data/sample.jpg")
     args = parser.parse_args()
     return args
 
 
-def main(args):
+def main(args: argparse.Namespace) -> None:
     print(args)
     model = Detector(args.arch)
     assert os.path.exists(args.input_path), f"{args.input_path} not exists"
@@ -43,5 +43,5 @@ def main(args):
 
 
 if __name__ == "__main__":
-    args = opt()
+    args = config()
     main(args)

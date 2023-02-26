@@ -6,8 +6,8 @@ import cv2
 from models.Detector import Detector
 
 
-def opt():
-    parser = argparse.ArgumentParser(description="mbg")
+def config() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="demo_webcam")
     parser.add_argument("--arch", type=str, default="MpHolistic")
     parser.add_argument("--camera_width", type=int, default=1280)
     parser.add_argument("--camera_height", type=int, default=720)
@@ -17,7 +17,7 @@ def opt():
     return args
 
 
-def main(args):
+def main(args: argparse.Namespace) -> None:
     print(args)
     cap = cv2.VideoCapture(0)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, args.camera_width)
@@ -28,7 +28,7 @@ def main(args):
     model = Detector(args.arch)
 
     while cap.isOpened():
-        ret, frame = cap.read()
+        _, frame = cap.read()
         start_time = time.perf_counter()
         tensor = model.preprocess(frame)
         preprocess_time = time.perf_counter() - start_time
@@ -53,5 +53,5 @@ def main(args):
 
 
 if __name__ == "__main__":
-    args = opt()
+    args = config()
     main(args)
