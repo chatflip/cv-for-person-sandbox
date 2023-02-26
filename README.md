@@ -1,5 +1,11 @@
 # cv-for-person-sandbox
 
+## Requirement
+
+- Python >= 3.9
+- Poetry >= 1.2
+
+
 ## Installation
 ```bash
 poetry install
@@ -13,3 +19,7 @@ python py/demo_webcam.py
 python py/demo_webcam.py --arch Deeplabv3Mobilenetv3Large
 python py/demo_webcam.py --arch Yunet.py
 ```
+
+## Author
+
+[chatflip](https://github.com/chatflip)
