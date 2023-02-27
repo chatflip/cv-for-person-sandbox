@@ -8,9 +8,11 @@ import cv2
 import numpy as np
 import numpy.typing as npt
 
+from .BaseModel import BaseModel
 
-class Yunet:
-    def __init__(self, is_int8=False, weight_root: str = "weight") -> None:
+
+class Yunet(BaseModel):
+    def __init__(self, is_int8: bool = False, weight_root: str = "weight") -> None:
         filename_float32 = "face_detection_yunet_2022mar.onnx"
         filename_int8 = "face_detection_yunet_2022mar-act_int8-wt_int8-quantized.onnx"
         filename = filename_int8 if is_int8 else filename_float32
@@ -31,7 +33,7 @@ class Yunet:
             return weight_path
         try:
             print(f"Downloading: {url}")
-            urllib.request.urlretrieve(url, weight_path)  # type: ignore
+            urllib.request.urlretrieve(url, weight_path)
             return weight_path
         except (OSError, urllib.error.HTTPError) as err:
             print(f"ERROR :{err.code}\n{err.reason}")  # type: ignore

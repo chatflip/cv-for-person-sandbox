@@ -13,6 +13,7 @@ from models.Yunet import Yunet
 
 class Detector:
     def __init__(self, arch: str) -> None:
+        self.model: Any
         if arch == "Deeplabv3Mobilenetv3Large":
             self.model = Deeplabv3Mobilenetv3Large()
         elif arch == "DeepLabv3Resnet101":

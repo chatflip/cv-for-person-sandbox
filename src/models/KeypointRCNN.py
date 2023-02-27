@@ -1,11 +1,14 @@
 import cv2
 import numpy as np
+import numpy.typing as npt
 import torch
 from torchvision.models.detection import keypointrcnn_resnet50_fpn
 
+from .BaseModel import BaseModel
 
-class KeypointRCNN:
-    def __init__(self):
+
+class KeypointRCNN(BaseModel):
+    def __init__(self) -> None:
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         model = keypointrcnn_resnet50_fpn(pretrained=True)
         self.model = model.eval().to(self.device)
@@ -28,22 +31,26 @@ class KeypointRCNN:
             (14, 16),
         ]
 
-    def preprocess(self, input):
+    def preprocess(self, input: npt.NDArray[np.uint8]) -> torch.Tensor:
         rgb_image = input[:, :, ::-1].copy()
         tensor = torch.as_tensor(rgb_image, dtype=torch.float) / 255.0
         tensor = tensor.permute(2, 0, 1).unsqueeze(0).to(self.device)
         return tensor
 
-    def inference(self, tensor):
-        with torch.inference_mode():
-            output = self.model(tensor)[0]
+    def inference(self, tensor: torch.Tensor) -> dict[str, torch.Tensor]:
+        with torch.inference_mode():  # type: ignore
+            output: dict[str, torch.Tensor] = self.model(tensor)[0]
         return output
 
-    def postprocess(self, input, output):
+    def postprocess(
+        self, input: npt.NDArray[np.uint8], output: dict[str, torch.Tensor]
+    ) -> npt.NDArray[np.uint8]:
         result_image = self.decode_keypoint(input, output)
         return result_image
 
-    def decode_keypoint(self, image, output):
+    def decode_keypoint(
+        self, image: npt.NDArray[np.uint8], output: dict[str, torch.Tensor]
+    ) -> npt.NDArray[np.uint8]:
         labels = output["labels"].cpu()
         scores = output["scores"].cpu()
         keypoints = output["keypoints"].cpu()
