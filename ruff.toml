@@ -1,0 +1,50 @@
+target-version = "py311"
+
+line-length = 88
+
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    "*/**/__init__.py",
+]
+
+[lint]
+select = [
+    "C", # flake8-comprehensions
+    "D", # pydocstyle
+    "E", # pycodestyle error
+    "F", # Pyflakes
+    "I", # isort
+    "W" # pycodestyle warning
+]
+ignore = [
+    "D100", # Missing docstring in public package
+    "D415" # First line should end with a period, question mark, or exclamation point
+]
+
+extend-select = []
+
+fixable = ["ALL"]
+unfixable = ["B"]
+
+[lint.pydocstyle]
+convention = "google"

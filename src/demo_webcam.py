@@ -3,6 +3,7 @@ import sys
 import time
 
 import cv2
+
 from models.Detector import Detector
 
 

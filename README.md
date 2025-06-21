@@ -2,7 +2,7 @@
 
 ## Requirement
 
-- Python >= 3.9
+- Python >= 3.10
 - Poetry >= 1.2
 
 
@@ -13,11 +13,11 @@ poetry install
 
 ## Usage
 ```bash
-python py/demo_image.py
-python py/demo_image.py --arch KeypointRCNN
-python py/demo_webcam.py
-python py/demo_webcam.py --arch Deeplabv3Mobilenetv3Large
-python py/demo_webcam.py --arch Yunet.py
+uv run python py/demo_image.py
+uv run python py/demo_image.py --arch KeypointRCNN
+uv run python py/demo_webcam.py
+uv run python py/demo_webcam.py --arch Deeplabv3Mobilenetv3Large
+uv run python py/demo_webcam.py --arch Yunet.py
 ```
 
 ## Author
