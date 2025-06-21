@@ -104,6 +104,15 @@ class Detector:
         """
         return self.model.postprocess(input, output)  # type: ignore
 
+    @staticmethod
+    def get_available_models() -> list[str]:
+        """Get the list of available model architectures.
+
+        Returns:
+            A list of available model architectures.
+        """
+        return self.available_models
+
     def __repr__(self) -> str:
         """Return a string representation of the Detector instance.
 
