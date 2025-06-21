@@ -111,7 +111,7 @@ class Detector:
         Returns:
             A list of available model architectures.
         """
-        return self.available_models
+        return Detector.available_models
 
     def __repr__(self) -> str:
         """Return a string representation of the Detector instance.

@@ -57,7 +57,12 @@ def inference_video(args: argparse.Namespace) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="inference_image")
     parser.add_argument(
-        "-a", "--arch", type=str, default="MpHolistic", help="model architecture"
+        "-a",
+        "--arch",
+        type=str,
+        default="MpHolistic",
+        choices=Detector.get_available_models(),
+        help="model architecture",
     )
     parser.add_argument(
         "-i",

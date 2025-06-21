@@ -62,7 +62,13 @@ def inference_webcam(args: argparse.Namespace) -> None:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="demo_webcam")
-    parser.add_argument("-a", "--arch", type=str, default="MpHolistic")
+    parser.add_argument(
+        "-a",
+        "--arch",
+        type=str,
+        default="MpHolistic",
+        choices=Detector.get_available_models(),
+    )
     parser.add_argument("-c", "--camera_index", type=int, default=0)
     parser.add_argument("-b", "--buffersize", type=int, default=1)
     args = parser.parse_args()
