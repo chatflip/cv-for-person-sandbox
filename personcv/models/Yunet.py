@@ -70,7 +70,7 @@ class Yunet(BaseModel):
         """
         _, faces = self.model.detect(tensor)
         if faces is None:
-            faces = np.empty(0, dtype=np.float32)
+            faces = np.empty(0, dtype=np.float32)  # type: ignore[unreachable]
         return faces  # type: ignore
 
     def postprocess(
@@ -105,9 +105,10 @@ class Yunet(BaseModel):
             box = list(map(int, face[:4]))
             cv2.rectangle(image, box, (255, 255, 255), 2, cv2.LINE_AA)
             landmarks = list(map(int, face[4 : len(face) - 1]))
-            landmarks = np.array(landmarks).reshape(-1, 2)  # type: ignore
-            for i in range(landmarks.shape[0]):  # type: ignore
-                cv2.circle(image, landmarks[i], 5, (0, 0, 255), -1, cv2.LINE_AA)
+            landmarks_array = np.array(landmarks).reshape(-1, 2)
+            for i in range(landmarks_array.shape[0]):
+                point = (int(landmarks_array[i, 0]), int(landmarks_array[i, 1]))
+                cv2.circle(image, point, 5, (0, 0, 255), -1, cv2.LINE_AA)
         return image
 
     def __repr__(self) -> str:

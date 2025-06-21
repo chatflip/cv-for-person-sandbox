@@ -9,22 +9,50 @@ import numpy.typing as npt
 
 
 class BaseModel(ABC):
+    """Base class for all models."""
+
     @abstractmethod
     def __init__(self) -> None:
+        """Initialize the model."""
         pass
 
     @abstractmethod
     def preprocess(self, input: npt.NDArray[np.uint8]) -> Any:
+        """Preprocess the input image.
+
+        Args:
+            input (npt.NDArray[np.uint8]): The input image.
+
+        Returns:
+            Any: The preprocessed image.
+        """
         pass
 
     @abstractmethod
     def inference(self, tensor: Any) -> Any:
+        """Inference the input image.
+
+        Args:
+            tensor (Any): The preprocessed image.
+
+        Returns:
+            Any: The inference result.
+        """
         pass
 
     @abstractmethod
     def postprocess(
         self, input: npt.NDArray[np.uint8], output: Any
     ) -> npt.NDArray[np.uint8]:
+        """Postprocess and draw the result on the image.
+
+        Args:
+            input (npt.NDArray[np.uint8]): The input image.
+            output (Any): The inference result.
+
+        Returns:
+            npt.NDArray[np.uint8]: The image with the result drawn on it.
+        """
         pass
 
     def download_file(self, url: str, filename: str) -> Path:
