@@ -4,7 +4,7 @@ import time
 
 import cv2
 
-from models.Detector import Detector
+from src.Detector import Detector
 
 
 def config() -> argparse.Namespace:

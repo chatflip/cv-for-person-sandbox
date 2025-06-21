@@ -4,13 +4,13 @@ import time
 
 import cv2
 
-from models.Detector import Detector
+from src.Detector import Detector
 
 
 def config() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="demo_image")
     parser.add_argument("--arch", type=str, default="MpHolistic")
-    parser.add_argument("--input_path", type=str, default="data/sample.jpg")
+    parser.add_argument("--input_path", type=str, default="assets/demo_image.jpg")
     args = parser.parse_args()
     return args
 

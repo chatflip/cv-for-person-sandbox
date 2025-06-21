@@ -3,13 +3,13 @@ from typing import Any
 import numpy as np
 import numpy.typing as npt
 
-from models.Deeplabv3Mobilenetv3Large import Deeplabv3Mobilenetv3Large
-from models.DeepLabv3Resnet101 import DeepLabv3Resnet101
-from models.FasterrcnnResnet50 import FasterrcnnResnet50
-from models.KeypointRCNN import KeypointRCNN
-from models.MpHolistic import MpHolistic
-from models.MpSelfieSegmentation import MpSelfieSegmentation
-from models.Yunet import Yunet
+from .models.Deeplabv3Mobilenetv3Large import Deeplabv3Mobilenetv3Large
+from .models.DeepLabv3Resnet101 import DeepLabv3Resnet101
+from .models.FasterrcnnResnet50 import FasterrcnnResnet50
+from .models.KeypointRCNN import KeypointRCNN
+from .models.MpHolistic import MpHolistic
+from .models.MpSelfieSegmentation import MpSelfieSegmentation
+from .models.Yunet import Yunet
 
 
 class Detector:
