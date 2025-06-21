@@ -15,7 +15,7 @@ def setup_webcam(args: argparse.Namespace) -> cv2.VideoCapture:
     Returns:
         cv2.VideoCapture: The webcam object.
     """
-    cap = cv2.VideoCapture(args.camera_index)
+    cap = cv2.VideoCapture(args.device_id)
     cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter.fourcc("m", "j", "p", "g"))
     cap.set(cv2.CAP_PROP_BUFFERSIZE, args.buffersize)
     return cap
@@ -69,7 +69,7 @@ if __name__ == "__main__":
         default="MpHolistic",
         choices=Detector.get_available_models(),
     )
-    parser.add_argument("-c", "--camera_index", type=int, default=0)
+    parser.add_argument("-d", "--device_id", type=int, default=0)
     parser.add_argument("-b", "--buffersize", type=int, default=1)
     args = parser.parse_args()
     inference_webcam(args)
