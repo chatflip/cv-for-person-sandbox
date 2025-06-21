@@ -2,7 +2,8 @@ import argparse
 import time
 
 import cv2
-from src.Detector import Detector
+
+from personcv.Detector import Detector
 
 
 def setup_webcam(args: argparse.Namespace) -> cv2.VideoCapture:
