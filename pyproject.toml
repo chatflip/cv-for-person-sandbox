@@ -21,6 +21,7 @@ dev = [
     "mdformat-frontmatter==2.0.8",
     "mdformat-gfm==0.4.1",
     "types-pyyaml>=6.0.12.20250402",
+    "pytest>=8.4.1",
 ]
 
 [build-system]
