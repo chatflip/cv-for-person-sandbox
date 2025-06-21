@@ -28,7 +28,7 @@ class FasterrcnnResnet50(BaseModel):
         return tensor
 
     def inference(self, tensor: torch.Tensor) -> dict[str, torch.Tensor]:
-        with torch.inference_mode():  # type: ignore
+        with torch.inference_mode():
             output: dict[str, torch.Tensor] = self.model(tensor)[0]
         return output
 

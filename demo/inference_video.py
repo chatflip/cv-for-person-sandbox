@@ -3,9 +3,8 @@ import time
 from pathlib import Path
 
 import cv2
-from tqdm import tqdm
-
 from src.Detector import Detector
+from tqdm import tqdm
 
 
 def inference_video(args: argparse.Namespace) -> None:

@@ -12,13 +12,15 @@ from .BaseModel import BaseModel
 
 
 class Yunet(BaseModel):
+    BASE_URL = "https://github.com/opencv/opencv_zoo/raw/refs/heads/main/models/face_detection_yunet"
+    MODEL_NAME_FLOAT32 = "face_detection_yunet_2023mar.onnx"
+    MODEL_NAME_INT8 = "face_detection_yunet_2023mar_int8.onnx"
+
     def __init__(self, is_int8: bool = False, weight_root: str = "weight") -> None:
-        filename_float32 = "face_detection_yunet_2022mar.onnx"
-        filename_int8 = "face_detection_yunet_2022mar-act_int8-wt_int8-quantized.onnx"
-        filename = filename_int8 if is_int8 else filename_float32
-        url = f"https://github.com/opencv/opencv_zoo/raw/master/models/face_detection_yunet/{filename}"
-        weight_path = self.download_weight(weight_root, filename, url)
-        self.model = cv2.FaceDetectorYN_create(
+        filename = self.MODEL_NAME_INT8 if is_int8 else self.MODEL_NAME_FLOAT32
+        model_url = f"{self.BASE_URL}/{filename}"
+        weight_path = self.download_weight(weight_root, filename, model_url)
+        self.model = cv2.FaceDetectorYN.create(
             model=weight_path,
             config="",
             input_size=(0, 0),

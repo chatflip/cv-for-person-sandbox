@@ -2,7 +2,6 @@ import argparse
 import time
 
 import cv2
-
 from src.Detector import Detector
 
 
