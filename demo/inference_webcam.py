@@ -16,7 +16,7 @@ def setup_webcam(args: argparse.Namespace) -> cv2.VideoCapture:
         cv2.VideoCapture: The webcam object.
     """
     cap = cv2.VideoCapture(args.camera_index)
-    cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*"MJPG"))
+    cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter.fourcc("M", "J", "P", "G"))
     cap.set(cv2.CAP_PROP_BUFFERSIZE, args.buffersize)
     return cap
 
