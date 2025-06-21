@@ -27,7 +27,7 @@ def inference_video(args: argparse.Namespace) -> None:
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     fps = cap.get(cv2.CAP_PROP_FPS)
     frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-    fourcc_mp4 = cv2.VideoWriter.fourcc("M", "P", "4", "V")
+    fourcc_mp4 = cv2.VideoWriter.fourcc("m", "p", "4", "v")
 
     writer = cv2.VideoWriter(dst_path, fourcc_mp4, fps, (width, height))
 
