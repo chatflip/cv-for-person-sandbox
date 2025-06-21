@@ -161,7 +161,7 @@ wheels = [
 [[package]]
 name = "cv-for-person-sandbox"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "mediapipe" },
     { name = "opencv-python" },
@@ -183,7 +183,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "mediapipe", specifier = ">=0.10.21" },
-    { name = "opencv-python", specifier = ">=4.11.0.86" },
+    { name = "opencv-python", specifier = ">=4.5.4" },
     { name = "torch", specifier = ">=2.7.1" },
     { name = "torchvision", specifier = ">=0.22.1" },
 ]
