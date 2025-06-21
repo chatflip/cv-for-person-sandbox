@@ -19,6 +19,8 @@ def inference_image(args: argparse.Namespace) -> None:
     model = Detector(args.arch)
     if not args.input_path.exists():
         raise FileNotFoundError(f"{args.input_path} not exists")
+    dst_path = f"{args.input_path.stem}_{args.arch}.png"
+
     image = cv2.imread(str(args.input_path))
 
     start_time = time.perf_counter()
@@ -39,7 +41,6 @@ def inference_image(args: argparse.Namespace) -> None:
     print(f"postprocess time: {1000 * postprocess_time:.1f}ms")
     print(f"total time: {1000 * interval:.1f}ms")
 
-    dst_path = f"{args.input_path.stem}_{args.arch}.png"
     cv2.imwrite(dst_path, result_image)
 
 
@@ -52,7 +53,7 @@ if __name__ == "__main__":
         "-i",
         "--input_path",
         type=Path,
-        default="assets/demo_image.jpg",
+        default="assets/sample_image.jpg",
         help="input image path",
     )
     args = parser.parse_args()
