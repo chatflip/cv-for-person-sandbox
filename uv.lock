@@ -1148,7 +1148,7 @@ requires-dist = [
     { name = "opencv-python", specifier = ">=4.5.4" },
     { name = "torch", specifier = ">=2.7.1" },
     { name = "torchvision", specifier = ">=0.22.1" },
-    { name = "tqdm", specifier = ">=4.67.1" },
+    { name = "tqdm" },
 ]
 
 [package.metadata.requires-dev]

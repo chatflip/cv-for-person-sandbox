@@ -9,7 +9,7 @@ dependencies = [
     "opencv-python>=4.5.4", # for Yunet
     "torch>=2.7.1",
     "torchvision>=0.22.1",
-    "tqdm>=4.67.1",
+    "tqdm",
 ]
 
 [dependency-groups]
