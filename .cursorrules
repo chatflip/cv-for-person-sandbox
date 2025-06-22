@@ -1,0 +1,9 @@
+# pcv project rules
+
+## Commands
+
+- `uv run pytest` (run tests)
+- `uv run ruff check --fix` (lint and fix)
+- `uv run ruff format` (format code)
+- `uv run mypy` (type check)
+- `uv run ruff check --fix && uv run ruff format && uv run mypy && uv run pytest` (full check)
