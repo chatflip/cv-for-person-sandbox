@@ -1,14 +1,15 @@
 [project]
-name = "cv-for-person-sandbox"
+name = "pcv"
 version = "0.1.0"
-description = "Add your description here"
+description = "Sandbox for person detection"
 readme = "README.md"
 requires-python = ">=3.10,<4.0"
 dependencies = [
     "mediapipe>=0.10.21",
     "opencv-python>=4.5.4", # for Yunet
     "torch>=2.7.1",
-    "torchvision>=0.22.1"
+    "torchvision>=0.22.1",
+    "tqdm>=4.67.1",
 ]
 
 [dependency-groups]
@@ -20,6 +21,7 @@ dev = [
     "mdformat-frontmatter==2.0.8",
     "mdformat-gfm==0.4.1",
     "types-pyyaml>=6.0.12.20250402",
+    "pytest>=8.4.1",
 ]
 
 [build-system]

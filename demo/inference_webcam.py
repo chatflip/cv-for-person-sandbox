@@ -1,31 +1,33 @@
 import argparse
-import sys
 import time
 
 import cv2
 
-from src.Detector import Detector
+from pcv.Detector import Detector
 
 
-def config() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="demo_webcam")
-    parser.add_argument("--arch", type=str, default="MpHolistic")
-    parser.add_argument("--camera_width", type=int, default=1280)
-    parser.add_argument("--camera_height", type=int, default=720)
-    parser.add_argument("--fps", type=float, default=60.0)
-    parser.add_argument("--buffersize", type=int, default=1)
-    args = parser.parse_args()
-    return args
+def setup_webcam(args: argparse.Namespace) -> cv2.VideoCapture:
+    """Setup webcam with the given arguments.
 
+    Args:
+        args (argparse.Namespace): Command line arguments.
 
-def main(args: argparse.Namespace) -> None:
-    print(args)
-    cap = cv2.VideoCapture(0)
-    cap.set(cv2.CAP_PROP_FRAME_WIDTH, args.camera_width)
-    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, args.camera_height)
-    cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*"MJPG"))
-    cap.set(cv2.CAP_PROP_FPS, args.fps)
+    Returns:
+        cv2.VideoCapture: The webcam object.
+    """
+    cap = cv2.VideoCapture(args.device_id)
+    cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter.fourcc("m", "j", "p", "g"))
     cap.set(cv2.CAP_PROP_BUFFERSIZE, args.buffersize)
+    return cap
+
+
+def inference_webcam(args: argparse.Namespace) -> None:
+    """Inference webcam with a given model.
+
+    Args:
+        args (argparse.Namespace): Command line arguments.
+    """
+    cap = setup_webcam(args)
     model = Detector(args.arch)
 
     while cap.isOpened():
@@ -43,16 +45,31 @@ def main(args: argparse.Namespace) -> None:
         postprocess_time = time.perf_counter() - start_time
 
         interval = preprocess_time + inference_time + postprocess_time
-        sys.stdout.write("\rFPS: {:.1f}".format(1.0 / interval))
-        sys.stdout.flush()
+        cv2.putText(
+            result_image,
+            f"FPS: {1.0 / interval:.1f}",
+            (10, 30),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            1,
+            (0, 0, 255),
+            2,
+        )
         cv2.imshow("result", result_image)
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
-    sys.stdout.write("\r")
-    sys.stdout.flush()
     cap.release()
 
 
 if __name__ == "__main__":
-    args = config()
-    main(args)
+    parser = argparse.ArgumentParser(description="demo_webcam")
+    parser.add_argument(
+        "-a",
+        "--arch",
+        type=str,
+        default="MpHolistic",
+        choices=Detector.get_available_models(),
+    )
+    parser.add_argument("-d", "--device_id", type=int, default=0)
+    parser.add_argument("-b", "--buffersize", type=int, default=1)
+    args = parser.parse_args()
+    inference_webcam(args)
