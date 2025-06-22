@@ -2,7 +2,7 @@ import numpy as np
 import numpy.typing as npt
 import pytest
 
-from personcv.models.Yunet import Yunet
+from pcv.models.Yunet import Yunet
 
 
 class TestYunet:

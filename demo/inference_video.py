@@ -5,7 +5,7 @@ from pathlib import Path
 import cv2
 from tqdm import tqdm
 
-from personcv.Detector import Detector
+from pcv.Detector import Detector
 
 
 def inference_video(args: argparse.Namespace) -> None:

@@ -65,7 +65,7 @@ class BaseModel(ABC):
         Returns:
             Path: The path to the downloaded file.
         """
-        root_dir = Path.home() / ".personcv"
+        root_dir = Path.home() / ".pcv"
         root_dir.mkdir(parents=True, exist_ok=True)
 
         file_path = root_dir / filename

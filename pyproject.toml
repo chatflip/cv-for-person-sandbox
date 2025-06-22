@@ -1,5 +1,5 @@
 [project]
-name = "personcv"
+name = "pcv"
 version = "0.1.0"
 description = "Sandbox for person detection"
 readme = "README.md"

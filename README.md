@@ -1,16 +1,12 @@
-# personcv
+# pcv
 
 ## Requirement
 
 - [uv](https://docs.astral.sh/uv/)
 
-## Installation
-
-```bash
-uv sync
-```
-
 ## Usage
+
+### For Users
 
 ```bash
 # Run inference with default model
@@ -22,6 +18,35 @@ uv run python demo/inference_webcam.py
 uv run python demo/inference_image.py --arch KeypointRCNN
 uv run python demo/inference_video.py --arch KeypointRCNN
 uv run python demo/inference_webcam.py --arch KeypointRCNN
+```
+
+### For Developers
+
+#### Install development dependencies
+
+```bash
+uv sync --group dev
+```
+
+#### Code Quality
+
+```bash
+# Run linter and formatter
+uv run ruff check
+uv run ruff format
+
+# Run type checker
+# uv run mypy
+
+# Format markdown files
+uv run mdformat README.md
+```
+
+#### Testing
+
+```bash
+# Run all tests
+uv run pytest
 ```
 
 ## License

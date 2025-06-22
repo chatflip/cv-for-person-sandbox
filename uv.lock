@@ -1119,7 +1119,7 @@ wheels = [
 ]
 
 [[package]]
-name = "personcv"
+name = "pcv"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
