@@ -4,7 +4,7 @@ from pathlib import Path
 
 import cv2
 
-from pcv.Detector import Detector
+from pcv import Detector
 
 
 def inference_image(args: argparse.Namespace) -> None:

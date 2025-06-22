@@ -3,7 +3,7 @@ import time
 
 import cv2
 
-from pcv.Detector import Detector
+from pcv import Detector
 
 
 def setup_webcam(args: argparse.Namespace) -> cv2.VideoCapture:
